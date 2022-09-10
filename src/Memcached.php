@@ -2,7 +2,8 @@
 
 namespace Andrey\Atol;
 
-class MemCached {
+class MemCached
+{
     public $debugMode = false;
 
     private const ANSWER_END = 'END';
@@ -13,7 +14,8 @@ class MemCached {
     /**
      * Подключиться
      */
-    public function connect(string $address): void {
+    public function connect(string $address): void
+    {
         $stream = @stream_socket_client($address, $errno, $errstr);
         if (!$stream) {
             throw new MemcachedException("{$errstr} ({$errno})");
@@ -24,14 +26,16 @@ class MemCached {
     /**
      * Отключиться
      */
-    public function close(): void {
+    public function close(): void
+    {
         @fclose($this->stream);
     }
 
     /**
      * Получить значение для ключа
      */
-    public function get(string $key): string {
+    public function get(string $key): string
+    {
         $this->sendCommand("get {$key}");
         $answer = $this->readToEnd();
         if (!$answer) {
@@ -46,7 +50,8 @@ class MemCached {
     /**
      * Установить значение для ключа
      */
-    public function set(string $key, string $value, int $expires = 0, int $flags = 0): void {
+    public function set(string $key, string $value, int $expires = 0, int $flags = 0): void
+    {
         $length = strlen($value);
         $this->sendCommand("set {$key} {$flags} {$expires} {$length}");
         $this->sendCommand($value);
@@ -59,7 +64,8 @@ class MemCached {
     /**
      * Удалить значение по ключу
      */
-    public function delete(string $key): void {
+    public function delete(string $key): void
+    {
         $this->sendCommand("delete {$key}");
         $this->read();
     }
@@ -67,7 +73,8 @@ class MemCached {
     /**
      * Отправить команду и добавить \r\n
      */
-    private function sendCommand(string $command): void {
+    private function sendCommand(string $command): void
+    {
         if (!$this->stream) {
             throw new MemcachedException("Not connected");
         }
@@ -84,7 +91,8 @@ class MemCached {
     /**
      * Читаем одну строку из ответа
      */
-    private function read(): string {
+    private function read(): string
+    {
         if (!$this->stream) {
             throw new MemcachedException("Not connected");
         }
@@ -102,7 +110,8 @@ class MemCached {
     /**
      * Читаем строки до END или пока их количество не достигнет $limit
      */
-    private function readToEnd(int $limit = 1000): array {
+    private function readToEnd(int $limit = 1000): array
+    {
         $rows = [];
         while (count($rows) < $limit) {
             $row = $this->read();

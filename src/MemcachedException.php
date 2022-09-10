@@ -2,4 +2,6 @@
 
 namespace Andrey\Atol;
 
-class MemcachedException extends \Exception { }
+class MemcachedException extends \Exception
+{
+}
