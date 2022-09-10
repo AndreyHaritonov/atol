@@ -2,9 +2,9 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Andrey\Atol\MemCached;
+use Andrey\Atol\Memcached;
 
-$client = new MemCached();
+$client = new Memcached();
 $client->debugMode = true;
 $client->connect('tcp://192.168.10.20:11211');
 try {

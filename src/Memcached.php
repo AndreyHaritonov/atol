@@ -2,7 +2,7 @@
 
 namespace Andrey\Atol;
 
-class MemCached
+class Memcached
 {
     public $debugMode = false;
 
