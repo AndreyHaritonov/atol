@@ -6,7 +6,7 @@ use Andrey\Atol\Memcached;
 
 $client = new Memcached();
 $client->debugMode = true;
-$client->connect('tcp://192.168.10.20:11211');
+$client->connect('tcp://127.0.0.1:11211');
 try {
     $value = $client->get('key');
     if ($value !== '') {
