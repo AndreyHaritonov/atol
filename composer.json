@@ -1,0 +1,17 @@
+{
+    "name": "andrey/atol",
+    "autoload": {
+        "psr-4": {
+            "Andrey\\Atol\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrey Kharitonov",
+            "email": "togliatti@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0.22"
+    }
+}

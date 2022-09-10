@@ -1,0 +1,4 @@
+/run
+/vendor
+.phpunit.result.cache
+.idea
