@@ -37,3 +37,7 @@ jobs:
 
     - name: Run sniffer
       run: composer run-script ci:php:sniff
+      
+    - name: Run test
+      run: composer run-script ci:php:test
+      
